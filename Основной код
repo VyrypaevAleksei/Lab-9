@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+vector<int> generateRandomSequence(int N) {
+   
+    vector<int> sequence(N);
+    for (int i = 0; i < N; ++i) {
+        sequence[i] = i + 1;
+    }
+
+    random_shuffle(sequence.begin(), sequence.end());
+
+    return sequence;
+}
+
+int main() {
+
+    setlocale(LC_ALL, "Russian");
+
+    srand(static_cast<unsigned int>(time(0)));
+
+    cout << "Введите количество бочек (N): ";
+    int N;
+    cin >> N;
+
+    while (N <= 0) {
+        cout << "Пожалуйста, введите положительное натуральное число: ";
+        cin >> N;
+    }
+
+    vector<int> sequence = generateRandomSequence(N);
+
+    cout << "Последовательность бочек: ";
+    for (int i = 0; i < N; ++i) {
+        cout << sequence[i] << " ";
+    }
+
+    return 0;
+}
