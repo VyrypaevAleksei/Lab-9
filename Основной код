@@ -3,11 +3,15 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <fstream>
 
 using namespace std;
 
+void log(const string& message);
+
 vector<int> generateRandomSequence(int N) {
-   
+    log("Генерация случайной последовательности");
+
     vector<int> sequence(N);
     for (int i = 0; i < N; ++i) {
         sequence[i] = i + 1;
@@ -18,27 +22,47 @@ vector<int> generateRandomSequence(int N) {
     return sequence;
 }
 
-int main() {
+void printSequence(const vector<int>& sequence) {
+    log("Вывод последовательности бочек");
 
+    cout << "Последовательность бочек: ";
+    for (int i = 0; i < sequence.size(); ++i) {
+        cout << sequence[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
     setlocale(LC_ALL, "Russian");
 
     srand(static_cast<unsigned int>(time(0)));
 
+    ofstream logfile("logfile.txt");
+
+    log("Программа стартовала");
     cout << "Введите количество бочек (N): ";
     int N;
-    cin >> N;
 
-    while (N <= 0) {
+    while (!(cin >> N) || N <= 0) {
+        cin.clear(); 
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         cout << "Пожалуйста, введите положительное натуральное число: ";
-        cin >> N;
     }
 
     vector<int> sequence = generateRandomSequence(N);
 
-    cout << "Последовательность бочек: ";
-    for (int i = 0; i < N; ++i) {
-        cout << sequence[i] << " ";
+    printSequence(sequence);
+
+    for (int i = 0; i < sequence.size(); ++i) {
+        logfile << "Выпало число: " << sequence[i] << endl;
     }
 
+    logfile.close();
+
+    log("Программа завершила выполнение");
     return 0;
+}
+
+void log(const string& message) {
+    cout << message << endl;
 }
