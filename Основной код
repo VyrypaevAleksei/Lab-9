@@ -1,37 +1,38 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <ctime>
-#include <cstdlib>
-#include <fstream>
+import random
+import logging
 
-using namespace std;
+# Настройка логгирования
+logging.basicConfig(filename='game_log.txt', level=logging.INFO, format='%(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
-void log(const string& message);
+def get_random_sequence(n):
 
-vector<int> generateRandomSequence(int N) {
-    log("Генерация случайной последовательности");
+    sequence = list(range(1, n + 1))
+    random.shuffle(sequence)
+    return sequence
 
-    vector<int> sequence(N);
-    for (int i = 0; i < N; ++i) {
-        sequence[i] = i + 1;
-    }
+def main():
 
-    random_shuffle(sequence.begin(), sequence.end());
+    try:
+        # Ввод количества бочек
+        n = int(input("Введите количество бочек (целое положительное число): "))
 
-    return sequence;
-}
+        if n <= 0:
+            print("Пожалуйста, введите положительное число.")
+            return
 
-void printSequence(const vector<int>& sequence) {
-    log("Вывод последовательности бочек");
+        # Генерация случайной последовательности
+        sequence = get_random_sequence(n)
 
-    cout << "Последовательность бочек: ";
-    for (int i = 0; i < sequence.size(); ++i) {
-        cout << sequence[i] << " ";
-    }
-    cout << endl;
-}
+        print("Вытаскиваем бочонки в случайном порядке:")
+        for barrel in sequence:
+            input(f"Нажмите Enter для вытаскивания бочонка номер {barrel}")
+            logging.info(f"Вытаскиван бочонок номер {barrel}")
 
+    except ValueError:
+        print("Ошибка: Введите корректное целое число.")
+
+if __name__ == "__main__":
+    main()
 int main() {
     setlocale(LC_ALL, "Russian");
 
