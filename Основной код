@@ -1,26 +1,38 @@
 import random
 import logging
 
-# Настройка логгирования
+
 logging.basicConfig(filename='game_log.txt', level=logging.INFO, format='%(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 def get_random_sequence(n):
+    """
+    Генерация случайной последовательности чисел от 1 до N.
 
+    Parameters:
+    - n (int): Натуральное число N, количество бочек.
+
+    Returns:
+    - list: Список, представляющий случайную последовательность чисел от 1 до N.
+    """
     sequence = list(range(1, n + 1))
     random.shuffle(sequence)
     return sequence
 
 def main():
+    """
+    Основная функция программы.
 
+    Получает от пользователя количество бочек, генерирует и выводит случайную последовательность.
+    """
     try:
-        # Ввод количества бочек
+        
         n = int(input("Введите количество бочек (целое положительное число): "))
 
         if n <= 0:
             print("Пожалуйста, введите положительное число.")
             return
 
-        # Генерация случайной последовательности
+        
         sequence = get_random_sequence(n)
 
         print("Вытаскиваем бочонки в случайном порядке:")
@@ -33,37 +45,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-int main() {
-    setlocale(LC_ALL, "Russian");
-
-    srand(static_cast<unsigned int>(time(0)));
-
-    ofstream logfile("logfile.txt");
-
-    log("Программа стартовала");
-    cout << "Введите количество бочек (N): ";
-    int N;
-
-    while (!(cin >> N) || N <= 0) {
-        cin.clear(); 
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-        cout << "Пожалуйста, введите положительное натуральное число: ";
-    }
-
-    vector<int> sequence = generateRandomSequence(N);
-
-    printSequence(sequence);
-
-    for (int i = 0; i < sequence.size(); ++i) {
-        logfile << "Выпало число: " << sequence[i] << endl;
-    }
-
-    logfile.close();
-
-    log("Программа завершила выполнение");
-    return 0;
-}
-
-void log(const string& message) {
-    cout << message << endl;
-}
