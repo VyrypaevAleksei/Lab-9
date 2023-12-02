@@ -21,6 +21,6 @@
 2. После ввода N, программа выдаст последовательность чисел в случайном порядке от 1 до N.
    
 ## Скриншоты тестов
-![скрин2](https://github.com/VyrypaevAleksei/Lab-9/assets/146480799/643e4c1d-cf66-4a09-9708-9f504c7dd431)
-![скрин1](https://github.com/VyrypaevAleksei/Lab-9/assets/146480799/31c482a9-5782-4dae-8bd1-bbc2d8a514e2)
-![скрин 3](https://github.com/VyrypaevAleksei/Lab-9/assets/146480799/7234c4aa-9878-4608-8a1e-20423063f8db)
+![скрин-1](https://github.com/VyrypaevAleksei/Lab-9/assets/146480799/e3d0fc79-4086-4e9f-b2f8-3be4446e581b)
+![скрин-3](https://github.com/VyrypaevAleksei/Lab-9/assets/146480799/ffab2c7e-471e-4f85-9d2d-d4315a4abe9e)
+![скрин-2](https://github.com/VyrypaevAleksei/Lab-9/assets/146480799/90aeb398-56bf-420c-9fbc-706dece31cbf)
